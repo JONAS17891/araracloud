@@ -253,26 +253,10 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
   const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const ua = navigator.userAgent;
 
-  // refração real só em Chromium com mouse (Safari/Firefox ignoram url() no backdrop-filter)
-  if (fine && /Chrome\/|Chromium\//.test(ua) && !/CriOS|FxiOS/.test(ua) &&
-      window.CSS && CSS.supports("backdrop-filter", "url(#x)")) html.classList.add("lg-refract");
 
   document.querySelectorAll(".header-inner, .button--glass, .hero-side-note, .floating-note")
     .forEach((el) => el.classList.add("lg"));
 
-  // brilho especular seguindo o cursor
-  if (fine) {
-    document.querySelectorAll(".lg").forEach((el) => {
-      el.addEventListener("pointermove", (ev) => {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--mx", ev.clientX - r.left + "px");
-        el.style.setProperty("--my", ev.clientY - r.top + "px");
-      });
-      el.addEventListener("pointerleave", () => {
-        el.style.removeProperty("--mx"); el.style.removeProperty("--my");
-      });
-    });
-  }
 
   // indicador de vidro que desliza entre os itens
   function lens(container, links, cls) {

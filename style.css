@@ -642,38 +642,21 @@ html.lenis, html.lenis body { height: auto; }
 @property --tint { syntax: "<color>"; inherits: true; initial-value: rgba(8,28,44,.38); }
 
 .lg {
-  --mx: 50%; --my: 0%; --tint: rgba(8,28,44,.38);
-  background:
-    radial-gradient(150px 70px at var(--mx) var(--my), rgba(255,255,255,.24), transparent 70%),
-    linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.04) 45%, rgba(255,255,255,.09)),
-    var(--tint);
-  -webkit-backdrop-filter: blur(16px) saturate(185%) brightness(1.08);
-  backdrop-filter: blur(16px) saturate(185%) brightness(1.08);
+  --tint: rgba(10,32,50,.82);
+  background: var(--tint);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   border: 1px solid rgba(255,255,255,.14);
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.42), inset 0 -1px 1px rgba(255,255,255,.08),
-    inset 0 0 16px rgba(255,255,255,.05),
-    0 14px 40px rgba(2,14,26,.32), 0 2px 6px rgba(2,14,26,.22);
+  box-shadow: 0 10px 30px rgba(2,14,26,.28);
 }
-/* brilho especular na borda */
-.lg::after {
-  content: ""; position: absolute; inset: 0; padding: 1px; border-radius: inherit; pointer-events: none; opacity: .8;
-  background: linear-gradient(140deg, rgba(255,255,255,.75), rgba(255,255,255,0) 32%, rgba(255,255,255,0) 68%, rgba(255,255,255,.38));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-}
-/* refração real (só Chromium com mouse; o resto usa o blur acima) */
-html.lg-refract .lg { backdrop-filter: blur(3px) url(#lg-refract) blur(10px) saturate(185%) brightness(1.08); }
 .button--glass.lg, .hero-side-note.lg, .dock-bar, .dock-cta { position: relative; }
-.button--glass.lg:hover { background:
-    radial-gradient(150px 70px at var(--mx) var(--my), rgba(255,255,255,.3), transparent 70%),
-    linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.06) 45%, rgba(255,255,255,.12)), var(--tint); }
+.button--glass.lg:hover { --tint: rgba(16,42,62,.92); }
 
 /* ---- Barra superior flutuante (pílula) ---- */
 .hero { z-index: 30; padding-top: 80px; }
 .site-header { position: fixed; top: 0; right: 0; left: 0; padding-top: 14px; pointer-events: none; }
 .header-inner.lg { width: min(1040px, calc(100% - 40px)); min-height: 58px; padding: 0 9px 0 16px; border-radius: 999px; pointer-events: auto; transition: --tint .4s ease; }
-.site-header.is-scrolled .header-inner.lg { --tint: rgba(8,28,44,.62); }
+.site-header.is-scrolled .header-inner.lg { --tint: rgba(8,28,44,.92); }
 .main-nav { position: relative; gap: 2px; }
 .main-nav > a:not(.mobile-nav-cta) { position: relative; z-index: 1; padding: 10px 15px; border-radius: 999px; font-size: 12px; transition: color .25s; }
 .main-nav > a.is-active { color: #c6f68c; }
@@ -706,11 +689,4 @@ html.lg-refract .lg { backdrop-filter: blur(3px) url(#lg-refract) blur(10px) sat
   .main-nav, .menu-toggle { display: none !important; }
   .dock { display: flex; }
   .site-footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .lg { --tint: rgba(8,28,44,.86); }
-}
-@media (prefers-reduced-transparency: reduce) {
-  .lg { -webkit-backdrop-filter: none; backdrop-filter: none; --tint: rgba(8,28,44,.94); }
-  html.lg-refract .lg { backdrop-filter: none; }
 }
