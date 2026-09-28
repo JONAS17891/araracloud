@@ -242,9 +242,14 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
   }
 
   // flutuar / brilhar
-  gsap.to(".floating-note", { y: -8, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: -1 });
+  // loops infinitos pausam quando saem da tela (economiza CPU/bateria)
+  const loop = (target, vars, trigger) => {
+    const tw = gsap.to(target, { ...vars, yoyo: true, repeat: -1, paused: true });
+    ScrollTrigger.create({ trigger, start: "top bottom", end: "bottom top", onToggle: (self) => (self.isActive ? tw.play() : tw.pause()) });
+  };
+  loop(".floating-note", { y: -8, duration: 2.4, ease: "sine.inOut" }, ".dashboard-wrap");
   $$(".closing-star").forEach((s, i) => {
-    gsap.to(s, { scale: 1.5, opacity: 0.35, duration: 1.8 + i * 0.6, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    loop(s, { scale: 1.5, opacity: 0.35, duration: 1.8 + i * 0.6, ease: "sine.inOut" }, ".closing-section");
   });
 
   /* ---------- Parallax (menos intenso no celular) ---------- */

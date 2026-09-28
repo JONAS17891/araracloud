@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#091b2b">
-  <meta name="description" content="VPS, bots e aplicações em uma cloud feita para tirar boas ideias do papel e colocá-las no ar. Conheça a Arara Cloud.">
+  <meta name="color-scheme" content="light">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Arara Cloud">
+  <meta name="description" content="Hospedagem de bots, APIs e aplicações em uma cloud feita para tirar boas ideias do papel e colocá-las no ar. Conheça a Arara Cloud.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Arara Cloud — Seu projeto merece voar">
   <meta property="og:description" content="Uma base para suas ideias ganharem o mundo.">
@@ -20,16 +24,23 @@
   <title>Arara Cloud — Seu projeto merece voar</title>
   <link rel="canonical" href="https://araracloud.vercel.app/">
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="preload" as="image" href="sky-sm.webp" type="image/webp" media="(max-width: 700px)" fetchpriority="high">
+  <link rel="preload" as="image" href="sky.webp" type="image/webp" media="(min-width: 701px)" fetchpriority="high">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="style.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M20 16.2A4.8 4.8 0 0 0 18.4 7a6.5 6.5 0 0 0-12.5 1.7A4.3 4.3 0 0 0 6.3 17H19"/><path d="M8 20h8"/></symbol>
     <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
@@ -83,7 +94,7 @@
       <header class="site-header">
         <div class="header-inner">
           <a class="brand" href="#inicio" aria-label="Arara Cloud — início">
-            <img class="brand-logo-mark" src="logo.png" alt="" aria-hidden="true">
+            <img class="brand-logo-mark" src="logo.webp" alt="" aria-hidden="true" width="39" height="34" decoding="async">
             <span class="brand-name">arara<span>cloud</span></span>
           </a>
           <nav class="main-nav" id="main-navigation" aria-label="Navegação principal">
@@ -94,7 +105,7 @@
             <a href="#duvidas">Dúvidas</a>
             <a class="mobile-nav-cta" href="#planos">Conheça os planos <svg class="icon"><use href="#i-arrow-right"></use></svg></a>
           </nav>
-          <a class="header-cta header-cta--ghost" href="https://financeiro.araracloud.site">Área do cliente</a>
+          <a class="header-cta header-cta--ghost" href="https://financeiro.araracloud.site" rel="noopener">Área do cliente</a>
           <a class="header-cta" href="#planos">Ver planos <svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
           <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-navigation">
             <svg class="icon menu-icon"><use href="#i-menu"></use></svg>
@@ -102,12 +113,12 @@
         </div>
       </header>
 
-      <main>
+      <div class="hero-body">
         <div class="hero-content page-width">
           <div class="hero-copy">
             <div class="eyebrow eyebrow--hero"><span class="eyebrow-dot"></span> INFRAESTRUTURA PARA QUEM CONSTRÓI</div>
             <h1 id="hero-title">Seu projeto<br>merece <em>voar.</em></h1>
-            <p class="hero-description">VPS, bots e aplicações em uma cloud feita para tirar boas ideias do papel — e colocá-las no ar.</p>
+            <p class="hero-description">Bots, APIs e aplicações em uma cloud feita para tirar boas ideias do papel — e colocá-las no ar.</p>
             <div class="hero-actions">
               <a class="button button--lime" href="#solucoes">Conheça as soluções <svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
               <a class="button button--glass" href="#plataforma"><span class="play-mark"><svg class="icon"><use href="#i-arrow-down-right"></use></svg></span> Explore a plataforma</a>
@@ -181,12 +192,13 @@
         </div>
         <div class="hero-bottom page-width">
           <span>UMA BASE PARA CONSTRUIR</span>
-          <div class="hero-capabilities"><span><svg class="icon"><use href="#i-server"></use></svg> VPS</span><i></i><span><svg class="icon"><use href="#i-message"></use></svg> BOTS</span><i></i><span><svg class="icon"><use href="#i-code"></use></svg> NODE.JS</span><i></i><span><svg class="icon"><use href="#i-layers"></use></svg> APLICAÇÕES</span></div>
+          <div class="hero-capabilities"><span><svg class="icon"><use href="#i-server"></use></svg> HOSPEDAGEM</span><i></i><span><svg class="icon"><use href="#i-message"></use></svg> BOTS</span><i></i><span><svg class="icon"><use href="#i-code"></use></svg> NODE.JS</span><i></i><span><svg class="icon"><use href="#i-layers"></use></svg> APLICAÇÕES</span></div>
           <a href="#solucoes" aria-label="Rolar até as soluções"><svg class="icon"><use href="#i-arrow-down-right"></use></svg></a>
         </div>
-      </main>
+      </div>
     </section>
 
+    <main id="conteudo">
     <section class="intro-section section-pad" id="plataforma">
       <div class="page-width intro-grid">
         <div class="intro-heading"><span class="eyebrow"><span class="eyebrow-dot eyebrow-dot--blue"></span> ARARA CLOUD, DO SEU JEITO</span><h2>Menos fricção.<br><span>Mais construção.</span></h2></div>
@@ -201,9 +213,9 @@
 
     <section class="solutions-section section-pad" id="solucoes">
       <div class="page-width">
-        <div class="section-heading section-heading--split"><div><span class="eyebrow"><span class="eyebrow-dot eyebrow-dot--green"></span> UM LUGAR PARA CADA PROJETO</span><h2>O que você vai<br><span>colocar no ar?</span></h2></div><p>De uma VPS enxuta a uma aplicação própria: comece pelo seu próximo projeto e encontre uma estrutura que faça sentido para você.</p></div>
+        <div class="section-heading section-heading--split"><div><span class="eyebrow"><span class="eyebrow-dot eyebrow-dot--green"></span> UM LUGAR PARA CADA PROJETO</span><h2>O que você vai<br><span>colocar no ar?</span></h2></div><p>De um bot simples a uma API própria: comece pelo seu próximo projeto e encontre uma estrutura que faça sentido para você.</p></div>
         <div class="services-grid">
-          <article class="service-card service-card--blue"><div class="service-card__top"><span>01</span><svg class="icon"><use href="#i-server"></use></svg></div><span class="service-eyebrow">COMPUTE</span><h3>VPS para suas ideias</h3><p>Um espaço próprio para instalar, configurar e executar seus projetos com liberdade.</p><div class="service-card__bottom"><span>VPS · AMBIENTES CLOUD</span><a href="#como-funciona" aria-label="Saiba mais sobre VPS"><svg class="icon"><use href="#i-arrow-up-right"></use></svg></a></div></article>
+          <article class="service-card service-card--blue"><div class="service-card__top"><span>01</span><svg class="icon"><use href="#i-server"></use></svg></div><span class="service-eyebrow">HOSPEDAGEM</span><h3>Espaço para seus projetos</h3><p>CPU, memória e disco bem definidos para você executar o que criou, com liberdade e sem complicação.</p><div class="service-card__bottom"><span>CLOUD · SÃO PAULO · MYSQL</span><a href="#como-funciona" aria-label="Saiba mais sobre a hospedagem"><svg class="icon"><use href="#i-arrow-up-right"></use></svg></a></div></article>
           <article class="service-card service-card--green"><div class="service-card__top"><span>02</span><svg class="icon"><use href="#i-message"></use></svg></div><span class="service-eyebrow">AUTOMAÇÃO</span><h3>Bots sempre por perto</h3><p>Uma base para bots e automações que precisam acompanhar o ritmo do seu negócio.</p><div class="service-card__bottom"><span>WHATSAPP · TELEGRAM · NODE.JS</span><a href="#como-funciona" aria-label="Saiba mais sobre bots"><svg class="icon"><use href="#i-arrow-up-right"></use></svg></a></div></article>
           <article class="service-card service-card--violet"><div class="service-card__top"><span>03</span><svg class="icon"><use href="#i-code"></use></svg></div><span class="service-eyebrow">APLICAÇÕES</span><h3>Código pronto para rodar</h3><p>Coloque APIs e aplicações Node.js em um ambiente pensado para quem constrói.</p><div class="service-card__bottom"><span>APIS · APPS · DEPLOYS</span><a href="#como-funciona" aria-label="Saiba mais sobre aplicações"><svg class="icon"><use href="#i-arrow-up-right"></use></svg></a></div></article>
         </div>
@@ -278,7 +290,7 @@
       <div class="page-width faq-grid">
         <div class="faq-intro"><span class="eyebrow"><span class="eyebrow-dot eyebrow-dot--green"></span> ANTES DE DECOLAR</span><h2>Boas perguntas.<br><span>Respostas diretas.</span></h2><p>Está avaliando a Arara Cloud? Comece por aqui e confirme os detalhes do seu projeto antes de escolher um plano.</p><a class="text-link" href="#solucoes">Voltar para as soluções <svg class="icon"><use href="#i-arrow-right"></use></svg></a></div>
         <div class="faq-list">
-          <article class="faq-item faq-item--open"><button class="faq-question" type="button" aria-expanded="true"><span class="faq-index">01</span><span>Que tipo de projeto posso hospedar?</span><svg class="icon"><use href="#i-chevron-down"></use></svg></button><div class="faq-answer"><p>A Arara Cloud foi pensada para projetos como VPS, bots, aplicações Node.js e APIs. Os requisitos e recursos disponíveis dependem da solução escolhida; confirme os detalhes antes de contratar.</p></div></article>
+          <article class="faq-item faq-item--open"><button class="faq-question" type="button" aria-expanded="true"><span class="faq-index">01</span><span>Que tipo de projeto posso hospedar?</span><svg class="icon"><use href="#i-chevron-down"></use></svg></button><div class="faq-answer"><p>A Arara Cloud foi pensada para projetos como bots, aplicações Node.js e APIs. Os requisitos e recursos disponíveis dependem da solução escolhida; confirme os detalhes antes de contratar.</p></div></article>
           <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span class="faq-index">02</span><span>Quais são os preços e recursos dos planos?</span><svg class="icon"><use href="#i-chevron-down"></use></svg></button><div class="faq-answer" hidden><p>O plano Easy custa R$ 3,50 por mês e o Fast custa R$ 5 por mês. Ambos usam processador Ryzen 5 7430U e ping em São Paulo (SP); confira os recursos completos nos cartões de planos.</p></div></article>
           <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span class="faq-index">03</span><span>O botão já conclui a contratação?</span><svg class="icon"><use href="#i-chevron-down"></use></svg></button><div class="faq-answer" hidden><p>Sim. O botão abre diretamente a página de contratação do plano na área do cliente.</p></div></article>
           <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span class="faq-index">04</span><span>Posso migrar um projeto que já está no ar?</span><svg class="icon"><use href="#i-chevron-down"></use></svg></button><div class="faq-answer" hidden><p>A migração depende da aplicação, das dependências e do ambiente atual. Revise os requisitos do seu projeto e combine o processo com a equipe da Arara Cloud.</p></div></article>
@@ -291,10 +303,11 @@
       <div class="page-width closing-content"><span class="closing-kicker"><span class="closing-spark">✳</span> SUA PRÓXIMA IDEIA COMEÇA AQUI</span><h2>Vai colocar<br>o quê <em>no ar?</em></h2><p>Escolha seu próximo passo e descubra uma nova forma de construir na nuvem.</p><a class="button button--lime" href="#planos">Conhecer os planos <svg class="icon"><use href="#i-arrow-up-right"></use></svg></a><span class="closing-note">Consulte os recursos e as condições dos planos antes de contratar.</span></div>
       <div class="closing-star closing-star--one" aria-hidden="true">✳</div><div class="closing-star closing-star--two" aria-hidden="true">✳</div>
     </section>
+    </main>
 
     <footer class="site-footer">
       <div class="page-width footer-main">
-        <div class="footer-brand"><a class="brand" href="#inicio" aria-label="Arara Cloud — início"><img class="brand-logo-mark" src="logo.png" alt="" aria-hidden="true"><span class="brand-name">arara<span>cloud</span></span></a><p>Uma base para suas ideias<br>ganharem o mundo.</p></div>
+        <div class="footer-brand"><a class="brand" href="#inicio" aria-label="Arara Cloud — início"><img class="brand-logo-mark" src="logo.webp" alt="" aria-hidden="true" width="39" height="34" decoding="async"><span class="brand-name">arara<span>cloud</span></span></a><p>Uma base para suas ideias<br>ganharem o mundo.</p></div>
         <div class="footer-nav"><div><span>NAVEGUE</span><a href="#solucoes">Soluções</a><a href="#plataforma">Plataforma</a><a href="#como-funciona">Como funciona</a></div><div><span>INFORMAÇÕES</span><a href="#duvidas">Perguntas frequentes</a><a href="#inicio">Voltar ao topo</a><a href="#comecar">Começar</a></div></div>
         <a class="back-top" href="#inicio" aria-label="Voltar ao início"><svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
       </div>
@@ -302,7 +315,7 @@
     </footer>
 
     <div class="launch-overlay" id="launch-overlay" aria-hidden="true">
-      <img src="logo.png" alt="" width="72" height="72">
+      <img src="logo.webp" alt="" width="72" height="65" loading="lazy" decoding="async">
       <p id="launch-text"></p>
       <i class="launch-bar"></i>
     </div>
