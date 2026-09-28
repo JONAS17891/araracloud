@@ -44,12 +44,32 @@ document.querySelectorAll(".faq-question").forEach((button) => {
 });
 
 const buyNotice = document.querySelector("#buy-notice");
+const launchOverlay = document.querySelector("#launch-overlay");
+const launchText = document.querySelector("#launch-text");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function launchTo(destination, planName, card, clickEvent) {
+  if (prefersReducedMotion || !launchOverlay) {
+    window.location.href = destination;
+    return;
+  }
+  const rect = clickEvent.currentTarget.getBoundingClientRect();
+  launchOverlay.style.setProperty("--x", rect.left + rect.width / 2 + "px");
+  launchOverlay.style.setProperty("--y", rect.top + rect.height / 2 + "px");
+  if (launchText) launchText.textContent = `Decolando com o plano ${planName}…`;
+  if (card) card.classList.add("lift");
+  requestAnimationFrame(() => launchOverlay.classList.add("on"));
+  setTimeout(() => { window.location.href = destination; }, 1900);
+}
+
 document.querySelectorAll("[data-buy-plan]").forEach((button) => {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", (event) => {
     const plan = button.getAttribute("data-buy-plan") || "";
     const destination = LINKS_DE_COMPRA[plan]?.trim();
+    const card = button.closest(".pricing-card");
+    const planName = card?.querySelector("h3")?.textContent?.trim() || plan;
     if (destination) {
-      window.open(destination, "_blank", "noopener,noreferrer");
+      launchTo(destination, planName, card, event);
       return;
     }
 
@@ -58,6 +78,29 @@ document.querySelectorAll("[data-buy-plan]").forEach((button) => {
       buyNotice.hidden = false;
       buyNotice.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
+  });
+});
+
+document.querySelectorAll("[data-copy]").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const code = btn.getAttribute("data-copy") || "";
+    const label = btn.querySelector("span");
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+    }
+    if (label) label.textContent = "Copiado!";
+    btn.classList.add("done");
+    setTimeout(() => {
+      if (label) label.textContent = "Copiar";
+      btn.classList.remove("done");
+    }, 2200);
   });
 });
 
@@ -150,7 +193,7 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
   /* ---------- Revelações ao rolar ---------- */
   reveal(".intro-heading > *, .intro-copy > *, .section-heading > *, .faq-intro > *, .closing-content > *", { y: 40 });
   reveal(".principle-card, .service-card, .pricing-card, .step-card", { y: 70, scale: 0.97 });
-  reveal(".pricing-client-wrap, .fine-print, .pricing-footnote, .steps-note, .faq-item, .footer-main > *", { y: 32 });
+  reveal(".pricing-client-wrap, .coupon-banner, .fine-print, .pricing-footnote, .steps-note, .faq-item, .footer-main > *", { y: 32 });
 
   // detalhes dentro dos planos: recursos em cascata + botão
   $$(".pricing-card").forEach((card) => {

@@ -92,7 +92,6 @@
             <a href="#plataforma">Plataforma</a>
             <a href="#como-funciona">Como funciona</a>
             <a href="#duvidas">Dúvidas</a>
-            <a href="https://financeiro.araracloud.site">Área do cliente</a>
             <a class="mobile-nav-cta" href="#planos">Conheça os planos <svg class="icon"><use href="#i-arrow-right"></use></svg></a>
           </nav>
           <a class="header-cta header-cta--ghost" href="https://financeiro.araracloud.site">Área do cliente</a>
@@ -219,6 +218,11 @@
           <span>Já é cliente?</span>
           <a class="pricing-client-cta" href="https://financeiro.araracloud.site">Acesse a Área do cliente <svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
         </div>
+      <div class="coupon-banner">
+        <p class="coupon-off">5%<small>de desconto</small></p>
+        <p class="coupon-text">Use o cupom ao finalizar a contratação e pague menos no seu plano.</p>
+        <button class="coupon-code" type="button" data-copy="INICIO5" aria-label="Copiar cupom INICIO5"><code>INICIO5</code><span aria-live="polite">Copiar</span></button>
+      </div>
       <div class="pricing-grid">
           <article class="pricing-card">
             <div class="pricing-card__top"><span class="pricing-badge"><span></span> PLANO MENSAL</span><span class="pricing-period">Reembolso em até 7 dias.</span></div>
@@ -253,7 +257,7 @@
             <button class="button button--lime pricing-button" type="button" data-buy-plan="Pro">Comprar plano <svg class="icon"><use href="#i-arrow-up-right"></use></svg></button>
           </article>
         </div>
-        <p class="pricing-footnote">Preços em reais (R$). O botão de compra abre o endereço configurado pelo administrador.</p>
+        <p class="pricing-footnote">Preços em reais (R$). Ao continuar, você é direcionado para a área do cliente para concluir a contratação.</p>
         <p class="buy-notice" id="buy-notice" role="status" aria-live="polite" hidden></p>
       </div>
     </section>
@@ -296,6 +300,12 @@
       </div>
       <div class="page-width footer-bottom"><span>© <span id="current-year"></span> Arara Cloud</span><span>Feito para quem constrói, com espaço para voar.</span></div>
     </footer>
+
+    <div class="launch-overlay" id="launch-overlay" aria-hidden="true">
+      <img src="logo.png" alt="" width="72" height="72">
+      <p id="launch-text"></p>
+      <i class="launch-bar"></i>
+    </div>
   </div>
 </body>
 </html>

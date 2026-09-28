@@ -714,3 +714,29 @@ html.lg-refract .lg { backdrop-filter: blur(3px) url(#lg-refract) blur(10px) sat
   .lg { -webkit-backdrop-filter: none; backdrop-filter: none; --tint: rgba(8,28,44,.94); }
   html.lg-refract .lg { backdrop-filter: none; }
 }
+
+/* Cupom de desconto */
+.coupon-banner { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin: 28px 0 34px; padding: 20px 26px; border: 2px dashed var(--mint-dark); border-radius: 18px; background: linear-gradient(180deg,rgba(186,243,106,.14),rgba(186,243,106,.05)); }
+.coupon-off { margin: 0; color: var(--ink); font-family: "Manrope", sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -.05em; line-height: 1; }
+.coupon-off small { display: block; margin-top: 4px; color: var(--body); font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0; }
+.coupon-text { flex: 1 1 220px; margin: 0; color: var(--body); font-size: 14px; }
+.coupon-code { display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 18px; border: 0; border-radius: 999px; background: var(--ink); color: #f1f8f3; cursor: pointer; transition: transform .2s var(--ease-out); }
+.coupon-code:hover { transform: translateY(-2px); }
+.coupon-code:active { transform: scale(.97); }
+.coupon-code code { font-family: "DM Mono", monospace; font-size: 15px; font-weight: 500; letter-spacing: .1em; }
+.coupon-code span { min-width: 84px; padding: 9px 15px; border-radius: 999px; background: var(--mint); color: #142519; font-size: 12px; font-weight: 700; text-align: center; transition: background .2s; }
+.coupon-code.done span { background: var(--mint-dark); }
+@media (max-width: 620px) { .coupon-banner { padding: 18px; gap: 14px; } .coupon-code { width: 100%; justify-content: space-between; } }
+
+/* Animação de decolagem ao escolher um plano */
+.launch-overlay { position: fixed; inset: 0; z-index: 999; display: grid; place-content: center; justify-items: center; gap: 20px; text-align: center; color: #f1f8f3; background: radial-gradient(circle at var(--x,50%) var(--y,50%), var(--ink-soft), var(--ink) 70%); clip-path: circle(0% at var(--x,50%) var(--y,50%)); transition: clip-path .9s var(--ease-out); pointer-events: none; }
+.launch-overlay.on { clip-path: circle(150% at var(--x,50%) var(--y,50%)); pointer-events: all; }
+.launch-overlay img { width: 72px; height: 72px; border-radius: 18px; background: #fff; padding: 8px; animation: launch-fly 1.4s var(--ease-out) .45s both; }
+.launch-overlay p { margin: 0; font-family: "Manrope", sans-serif; font-size: clamp(20px,3.6vw,32px); font-weight: 600; letter-spacing: -.03em; opacity: 0; transition: opacity .5s .5s; }
+.launch-overlay.on p { opacity: 1; }
+.launch-bar { width: min(240px,60vw); height: 4px; border-radius: 9px; overflow: hidden; background: rgba(241,248,243,.16); }
+.launch-bar::after { content: ""; display: block; height: 100%; width: 0; background: var(--mint); transition: width 1.2s .5s ease-in-out; }
+.launch-overlay.on .launch-bar::after { width: 100%; }
+@keyframes launch-fly { 0% { transform: translateY(26px) scale(.82); } 45% { transform: translateY(0) scale(1); } 100% { transform: translateY(-32px) rotate(-6deg) scale(1.06); } }
+.pricing-card.lift { transform: translateY(-14px) scale(1.03); box-shadow: 0 30px 80px rgba(186,243,106,.28); }
+@media (prefers-reduced-motion: reduce) { .launch-overlay, .launch-overlay img, .launch-overlay p, .launch-bar::after { animation: none !important; transition: none !important; } }
