@@ -1,8 +1,4 @@
-/*
- * CONFIGURAÇÃO DO LINK DE COMPRA
- * Quando seu site de contratação estiver pronto, cole a URL de cada plano
- * entre as aspas correspondentes. Se usar um único endereço, repita-o nos dois.
- */
+
 const LINKS_DE_COMPRA = {
   Inicial: "https://financeiro.araracloud.site/store/hospedagem-de-bots-ryzen-5-7430u/hospedagem-easy-400-mb-de-ram",
   Pro: "https://financeiro.araracloud.site/store/hospedagem-de-bots-ryzen-5-7430u/hospedagem-fast-800-mb-de-ram",
