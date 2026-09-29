@@ -1,4 +1,8 @@
-
+/*
+ * CONFIGURAÇÃO DO LINK DE COMPRA
+ * Quando seu site de contratação estiver pronto, cole a URL de cada plano
+ * entre as aspas correspondentes. Se usar um único endereço, repita-o nos dois.
+ */
 const LINKS_DE_COMPRA = {
   Inicial: "https://financeiro.araracloud.site/store/hospedagem-de-bots-ryzen-5-7430u/hospedagem-easy-400-mb-de-ram",
   Pro: "https://financeiro.araracloud.site/store/hospedagem-de-bots-ryzen-5-7430u/hospedagem-fast-800-mb-de-ram",
@@ -282,14 +286,15 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
       gsap.fromTo(o, { rotation: -40 }, { rotation: 60, ease: "none", scrollTrigger: st(o.closest(".principle-card")) });
     });
 
-  
+    // fechamento: nuvens e estrelas em camadas
     gsap.fromTo(".closing-cloud--one", { y: 90 * k }, { y: -90 * k, ease: "none", scrollTrigger: st(".closing-section") });
     gsap.fromTo(".closing-cloud--two", { y: -60 * k }, { y: 80 * k, ease: "none", scrollTrigger: st(".closing-section") });
     gsap.fromTo(".closing-star--one", { y: 70 * k, rotation: 0 }, { y: -110 * k, rotation: 120, ease: "none", scrollTrigger: st(".closing-section") });
     gsap.fromTo(".closing-star--two", { y: 40 * k, rotation: 0 }, { y: -160 * k, rotation: -160, ease: "none", scrollTrigger: st(".closing-section") });
   });
 
- 
+  /* ---------- Ajustes finos ---------- */
+  // espera a animação do FAQ (0,5s) terminar antes de recalcular o scroll
   document.querySelectorAll(".faq-question").forEach((b) =>
     b.addEventListener("click", () => setTimeout(() => ScrollTrigger.refresh(), 520))
   );
@@ -297,21 +302,23 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
 })();
 
-
+/* ==========================================================================
+ * LIQUID GLASS — indicador deslizante, dock mobile e brilho que segue o mouse
+ * ========================================================================== */
 (function () {
   "use strict";
   const html = document.documentElement;
   const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const ua = navigator.userAgent;
 
-
+  // refração real só em Chromium com mouse (Safari/Firefox ignoram url() no backdrop-filter)
   if (fine && /Chrome\/|Chromium\//.test(ua) && !/CriOS|FxiOS/.test(ua) &&
       window.CSS && CSS.supports("backdrop-filter", "url(#x)")) html.classList.add("lg-refract");
 
   document.querySelectorAll(".header-inner, .button--glass, .hero-side-note, .floating-note")
     .forEach((el) => el.classList.add("lg"));
 
-  
+  // brilho especular seguindo o cursor
   if (fine) {
     document.querySelectorAll(".lg").forEach((el) => {
       el.addEventListener("pointermove", (ev) => {
@@ -325,7 +332,7 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
     });
   }
 
-
+  // indicador de vidro que desliza entre os itens
   function lens(container, links, cls) {
     if (!container) return () => {};
     const el = document.createElement("span");
@@ -354,7 +361,7 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
   const setDesk = lens(document.querySelector(".main-nav"), deskLinks, "nav-lens");
   const setDock = lens(document.querySelector(".dock-bar"), dockLinks, "dock-lens");
 
-  
+  // qual seção está no meio da tela?
   const findLink = (list, href) => list.find((a) => a.getAttribute("href") === href) || null;
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
@@ -371,7 +378,7 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
   const closing = document.querySelector("#comecar");
   if (closing) { closing.dataset.navId = "#comecar"; io.observe(closing); }
 
-
+  // barra fica mais densa ao rolar; dock encolhe ao descer e volta ao subir
   const header = document.querySelector(".site-header");
   const dock = document.querySelector(".dock");
   let lastY = window.scrollY;
@@ -381,7 +388,7 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
     if (dock && Math.abs(y - lastY) > 6) { dock.classList.toggle("is-compact", y > lastY && y > 120); lastY = y; }
   }, { passive: true });
 
-
+  // entrada da dock
   if (window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     gsap.from(".dock-bar, .dock-cta", { y: 90, opacity: 0, scale: 0.9, duration: 1.2, ease: "expo.out", delay: 1.2, stagger: 0.08, clearProps: "transform,opacity" });
   }
