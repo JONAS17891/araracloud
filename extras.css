@@ -56,3 +56,6 @@
 
 /* "overflow:hidden" no .site-shell quebrava o position:sticky do FAQ; "clip" corta igual sem criar área de rolagem */
 .site-shell { overflow: hidden; overflow: clip; }
+
+/* aviso de uso único do cupom (ocupa a linha inteira embaixo do banner) */
+.coupon-terms { flex: 0 0 100%; margin: 0; padding-top: 14px; border-top: 1px dashed rgba(128,207,116,.55); color: #6b7b84; font-size: 12px; line-height: 1.6; }
