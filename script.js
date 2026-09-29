@@ -296,7 +296,7 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
   /* ---------- Ajustes finos ---------- */
   document.querySelectorAll(".faq-question").forEach((b) =>
-    b.addEventListener("click", () => setTimeout(() => ScrollTrigger.refresh(), 250))
+    b.addEventListener("click", () => setTimeout(() => ScrollTrigger.refresh(), 520))
   );
   window.addEventListener("load", () => ScrollTrigger.refresh());
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
