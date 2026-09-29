@@ -31,18 +31,26 @@ if (menuButton && navigation) {
   });
 }
 
+/* ---------- FAQ (sanfona com animação por CSS) ---------- */
+function setFaq(item, open) {
+  item.classList.toggle("faq-item--open", open);
+  item.querySelector(".faq-question")?.setAttribute("aria-expanded", String(open));
+}
+
 document.querySelectorAll(".faq-question").forEach((button) => {
   button.addEventListener("click", () => {
     const item = button.closest(".faq-item");
-    const answer = item?.querySelector(".faq-answer");
-    if (!item || !answer) return;
-    const willOpen = button.getAttribute("aria-expanded") !== "true";
-    button.setAttribute("aria-expanded", String(willOpen));
-    item.classList.toggle("faq-item--open", willOpen);
-    answer.hidden = !willOpen;
+    if (!item) return;
+    const willOpen = !item.classList.contains("faq-item--open");
+    // modo sanfona: abre um, fecha os outros
+    document.querySelectorAll(".faq-item--open").forEach((o) => {
+      if (o !== item) setFaq(o, false);
+    });
+    setFaq(item, willOpen);
   });
 });
 
+/* ---------- Compra dos planos ---------- */
 const buyNotice = document.querySelector("#buy-notice");
 const launchOverlay = document.querySelector("#launch-overlay");
 const launchText = document.querySelector("#launch-text");
@@ -81,6 +89,7 @@ document.querySelectorAll("[data-buy-plan]").forEach((button) => {
   });
 });
 
+/* ---------- Copiar cupom ---------- */
 document.querySelectorAll("[data-copy]").forEach((btn) => {
   btn.addEventListener("click", async () => {
     const code = btn.getAttribute("data-copy") || "";
@@ -285,8 +294,9 @@ if (currentYear) currentYear.textContent = String(new Date().getFullYear());
   });
 
   /* ---------- Ajustes finos ---------- */
+  // espera a animação do FAQ (0,5s) terminar antes de recalcular o scroll
   document.querySelectorAll(".faq-question").forEach((b) =>
-    b.addEventListener("click", () => setTimeout(() => ScrollTrigger.refresh(), 60))
+    b.addEventListener("click", () => setTimeout(() => ScrollTrigger.refresh(), 520))
   );
   window.addEventListener("load", () => ScrollTrigger.refresh());
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
