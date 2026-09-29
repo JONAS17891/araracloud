@@ -1,0 +1,61 @@
+<!-- ===== AVALIAÇÕES: cole ENTRE o </section> dos planos e a <section class="steps-section"> ===== -->
+<section class="reviews-section section-pad" id="avaliacoes" aria-labelledby="reviews-title">
+  <div class="page-width">
+    <div class="section-heading section-heading--split">
+      <div>
+        <span class="eyebrow"><span class="eyebrow-dot eyebrow-dot--green"></span> AVALIAÇÕES</span>
+        <h2 id="reviews-title">Sua opinião<br><span>faz a diferença.</span></h2>
+      </div>
+      <p>Conte como foi sua experiência com a Arara Cloud. Sua avaliação aparece aqui para outras pessoas conhecerem.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <aside class="reviews-side">
+        <div class="rv-summary" id="rv-summary" aria-live="polite">
+          <div class="rv-skeleton"></div>
+        </div>
+
+        <form class="rv-form" id="rv-form" novalidate>
+          <h3>Deixe sua avaliação</h3>
+
+          <fieldset class="rv-field">
+            <legend>Sua nota</legend>
+            <div class="rv-stars-input" id="rv-stars-input" role="radiogroup" aria-label="Nota de 1 a 5 estrelas"></div>
+          </fieldset>
+
+          <div class="rv-field">
+            <label for="rv-name">Seu nome</label>
+            <input id="rv-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="Como quer aparecer" required>
+          </div>
+
+          <div class="rv-field">
+            <label for="rv-plan">Qual plano você usa?</label>
+            <select id="rv-plan" name="plan">
+              <option value="">Ainda não sou cliente</option>
+              <option value="Easy">Easy</option>
+              <option value="Fast">Fast</option>
+            </select>
+          </div>
+
+          <div class="rv-field">
+            <label for="rv-text">Sua avaliação</label>
+            <textarea id="rv-text" name="text" rows="4" maxlength="500" placeholder="O que achou do desempenho, do suporte, da facilidade?" required></textarea>
+            <span class="rv-counter" id="rv-count">0/500</span>
+          </div>
+
+          <!-- campo isca contra robôs: não remova -->
+          <div class="rv-hp" aria-hidden="true"><label>Site <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+          <button class="button button--lime rv-submit" id="rv-submit" type="submit">Publicar avaliação <svg class="icon"><use href="#i-arrow-up-right"></use></svg></button>
+          <p class="rv-status" id="rv-status" role="status" aria-live="polite" hidden></p>
+          <p class="rv-note">Seu nome e sua avaliação ficam públicos. Não escreva dados pessoais ou senhas.</p>
+        </form>
+      </aside>
+
+      <div class="reviews-main">
+        <div class="rv-list" id="rv-list" aria-live="polite"></div>
+        <button class="rv-more" id="rv-more" type="button" hidden>Ver mais avaliações</button>
+      </div>
+    </div>
+  </div>
+</section>
