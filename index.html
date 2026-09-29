@@ -34,14 +34,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="style.min.css">
-  <!-- NOVO: estilos do FAQ redesenhado + avaliações (carrega depois do style.min.css) -->
+  <!-- estilos do FAQ redesenhado (carrega depois do style.min.css) -->
   <link rel="stylesheet" href="extras.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
   <script src="script.js" defer></script>
-  <!-- NOVO: lógica das avaliações -->
-  <script src="reviews.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -102,9 +100,9 @@
             <span class="brand-name">arara<span>cloud</span></span>
           </a>
           <nav class="main-nav" id="main-navigation" aria-label="Navegação principal">
+            <a href="#plataforma">Plataforma</a>
             <a href="#solucoes">Soluções</a>
             <a href="#planos">Planos</a>
-            <a href="#plataforma">Plataforma</a>
             <a href="#como-funciona">Como funciona</a>
             <a href="#duvidas">Dúvidas</a>
             <a class="mobile-nav-cta" href="#planos">Conheça os planos <svg class="icon"><use href="#i-arrow-right"></use></svg></a>
@@ -248,7 +246,7 @@
             <div class="plan-resource-grid">
               <div class="plan-resource"><span><svg class="icon"><use href="#i-cpu"></use></svg> CPU</span><strong>Ryzen 5 7430U</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-layers"></use></svg> Memória (RAM)</span><strong>400 MB</strong></div>
-              <div class="plan-resource"><span><svg class="icon"><use href="#i-hard-drive"></use></svg> Disco</span><strong>10240 MB</strong></div>
+              <div class="plan-resource"><span><svg class="icon"><use href="#i-hard-drive"></use></svg> Disco</span><strong>1 GB</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-shield"></use></svg> Cópias de segurança</span><strong>1</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-database"></use></svg> Bancos de dados MySQL</span><strong>1</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-activity"></use></svg> Alocações adicionais (portas)</span><strong>0</strong></div>
@@ -264,7 +262,7 @@
             <div class="plan-resource-grid">
               <div class="plan-resource"><span><svg class="icon"><use href="#i-cpu"></use></svg> CPU</span><strong>Ryzen 5 7430U</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-layers"></use></svg> Memória (RAM)</span><strong>800 MB</strong></div>
-              <div class="plan-resource"><span><svg class="icon"><use href="#i-hard-drive"></use></svg> Disco</span><strong>20480 MB</strong></div>
+              <div class="plan-resource"><span><svg class="icon"><use href="#i-hard-drive"></use></svg> Disco</span><strong>2 GB</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-shield"></use></svg> Cópias de segurança</span><strong>1</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-database"></use></svg> Bancos de dados MySQL</span><strong>2</strong></div>
               <div class="plan-resource"><span><svg class="icon"><use href="#i-activity"></use></svg> Alocações adicionais (portas)</span><strong>1</strong></div>
@@ -275,68 +273,6 @@
         </div>
         <p class="pricing-footnote">Preços em reais (R$). Ao continuar, você é direcionado para a área do cliente para concluir a contratação.</p>
         <p class="buy-notice" id="buy-notice" role="status" aria-live="polite" hidden></p>
-      </div>
-    </section>
-
-    <!-- ===== NOVO: AVALIAÇÕES ===== -->
-    <section class="reviews-section section-pad" id="avaliacoes" aria-labelledby="reviews-title">
-      <div class="page-width">
-        <div class="section-heading section-heading--split">
-          <div>
-            <span class="eyebrow"><span class="eyebrow-dot eyebrow-dot--green"></span> AVALIAÇÕES</span>
-            <h2 id="reviews-title">Sua opinião<br><span>faz a diferença.</span></h2>
-          </div>
-          <p>Conte como foi sua experiência com a Arara Cloud. Sua avaliação aparece aqui para outras pessoas conhecerem.</p>
-        </div>
-
-        <div class="reviews-grid">
-          <aside class="reviews-side">
-            <div class="rv-summary" id="rv-summary" aria-live="polite">
-              <div class="rv-skeleton"></div>
-            </div>
-
-            <form class="rv-form" id="rv-form" novalidate>
-              <h3>Deixe sua avaliação</h3>
-
-              <fieldset class="rv-field">
-                <legend>Sua nota</legend>
-                <div class="rv-stars-input" id="rv-stars-input" role="radiogroup" aria-label="Nota de 1 a 5 estrelas"></div>
-              </fieldset>
-
-              <div class="rv-field">
-                <label for="rv-name">Seu nome</label>
-                <input id="rv-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="Como quer aparecer" required>
-              </div>
-
-              <fieldset class="rv-field">
-                <legend>Qual plano você usa?</legend>
-                <div class="rv-choices">
-                  <label class="rv-choice"><input type="radio" name="plan" value="" checked><span>Ainda não sou cliente</span></label>
-                  <label class="rv-choice"><input type="radio" name="plan" value="Easy"><span>Easy</span></label>
-                  <label class="rv-choice"><input type="radio" name="plan" value="Fast"><span>Fast</span></label>
-                </div>
-              </fieldset>
-
-              <div class="rv-field">
-                <label for="rv-text">Sua avaliação</label>
-                <textarea id="rv-text" name="text" rows="4" maxlength="500" placeholder="O que achou do desempenho, do suporte, da facilidade?" required></textarea>
-                <span class="rv-counter" id="rv-count">0/500</span>
-              </div>
-
-              <!-- campo isca contra robôs: não remova -->
-              <div class="rv-hp" aria-hidden="true"><label>Site <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-
-              <button class="button button--lime rv-submit" id="rv-submit" type="submit">Publicar avaliação <svg class="icon"><use href="#i-arrow-up-right"></use></svg></button>
-              <p class="rv-status" id="rv-status" role="status" aria-live="polite" hidden></p>
-              <p class="rv-note">Seu nome e sua avaliação ficam públicos. Não escreva dados pessoais ou senhas.</p>
-            </form>
-          </aside>
-
-          <div class="reviews-main">
-            <div class="rv-list" id="rv-list" aria-live="polite"></div>
-            <button class="rv-more" id="rv-more" type="button" hidden>Ver mais avaliações</button>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -384,7 +320,7 @@
 
           <article class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false"><span class="faq-index">03</span><span>Qual a diferença entre o Easy e o Fast?</span><span class="faq-toggle"><svg class="icon"><use href="#i-chevron-down"></use></svg></span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>O Easy tem 400 MB de RAM, 10240 MB de disco, 1 banco MySQL e nenhuma porta adicional. O Fast dobra os recursos: 800 MB de RAM, 20480 MB de disco, 2 bancos MySQL e 1 porta adicional.</p></div></div>
+            <div class="faq-answer"><div class="faq-answer-inner"><p>O Easy tem 400 MB de RAM, 1 GB de disco, 1 banco MySQL e nenhuma porta adicional. O Fast dobra os recursos: 800 MB de RAM, 2 GB de disco, 2 bancos MySQL e 1 porta adicional.</p></div></div>
           </article>
 
           <article class="faq-item">
@@ -440,7 +376,7 @@
     <footer class="site-footer">
       <div class="page-width footer-main">
         <div class="footer-brand"><a class="brand" href="#inicio" aria-label="Arara Cloud — início"><img class="brand-logo-mark" src="logo.webp" alt="" aria-hidden="true" width="39" height="34" decoding="async"><span class="brand-name">arara<span>cloud</span></span></a><p>Uma base para suas ideias<br>ganharem o mundo.</p></div>
-        <div class="footer-nav"><div><span>NAVEGUE</span><a href="#solucoes">Soluções</a><a href="#plataforma">Plataforma</a><a href="#como-funciona">Como funciona</a></div><div><span>INFORMAÇÕES</span><a href="#avaliacoes">Avaliações</a><a href="#duvidas">Perguntas frequentes</a><a href="#inicio">Voltar ao topo</a><a href="#comecar">Começar</a></div></div>
+        <div class="footer-nav"><div><span>NAVEGUE</span><a href="#plataforma">Plataforma</a><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a></div><div><span>INFORMAÇÕES</span><a href="#duvidas">Perguntas frequentes</a><a href="#inicio">Voltar ao topo</a><a href="#comecar">Começar</a></div></div>
         <a class="back-top" href="#inicio" aria-label="Voltar ao início"><svg class="icon"><use href="#i-arrow-up-right"></use></svg></a>
       </div>
       <div class="page-width footer-bottom"><span>© <span id="current-year"></span> Arara Cloud</span><span>Feito para quem constrói, com espaço para voar.</span></div>

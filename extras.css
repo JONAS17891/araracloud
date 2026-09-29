@@ -1,5 +1,5 @@
 /* ==========================================================================
-   extras.css — FAQ redesenhado + seção de avaliações
+   extras.css — FAQ redesenhado
    (carrega DEPOIS do style.min.css, por isso sobrescreve o FAQ antigo)
    ========================================================================== */
 
@@ -54,106 +54,5 @@
   .faq-answer, .faq-answer p, .faq-toggle, .faq-item { transition: none !important; }
 }
 
-/* ===== Avaliações ===== */
-.reviews-section { background: #eef3f0; }
-.reviews-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 28px; align-items: start; margin-top: 53px; }
-.reviews-side { position: sticky; top: 96px; display: grid; gap: 14px; }
-
-/* estrelas (base cinza + camada dourada cortada na largura) */
-.rv-stars { position: relative; display: inline-block; line-height: 0; white-space: nowrap; }
-.rv-stars__row { display: inline-flex; gap: 2px; }
-.rv-stars__fill { position: absolute; inset: 0 auto 0 0; overflow: hidden; white-space: nowrap; }
-.rv-star-svg { width: 16px; height: 16px; flex: none; fill: currentColor; stroke: none; }
-.rv-stars__base { color: #cfdbd6; }
-.rv-stars__fill { color: #f2b23a; }
-.rv-stars--lg .rv-star-svg { width: 20px; height: 20px; }
-
-/* resumo */
-.rv-summary { padding: 24px; border: 1px solid #dbe5e0; border-radius: 18px; background: #fff; }
-.rv-summary__top { display: flex; align-items: center; gap: 18px; }
-.rv-avg { color: #122434; font-family: "Manrope", sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -.06em; line-height: 1; }
-.rv-summary__meta { display: grid; gap: 6px; }
-.rv-summary__meta span { color: #62727a; font-size: 13px; }
-.rv-dist { display: grid; gap: 7px; margin: 20px 0 0; padding: 0; list-style: none; }
-.rv-dist li { display: grid; grid-template-columns: 14px 1fr 26px; align-items: center; gap: 10px; color: #62727a; font-size: 12px; }
-.rv-dist li span:last-child { text-align: right; }
-.rv-bar { height: 6px; overflow: hidden; border-radius: 99px; background: #e6eeea; }
-.rv-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #69c99e, #baf36a); transition: width .9s var(--ease-out); }
-.rv-empty-title { margin: 0 0 6px; color: #122434; font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -.04em; }
-.rv-summary p { margin: 0; color: #62727a; font-size: 13.5px; line-height: 1.7; }
-.rv-skeleton { height: 96px; border-radius: 12px; background: linear-gradient(90deg, #edf3f0 25%, #f7faf8 50%, #edf3f0 75%); background-size: 200% 100%; animation: rv-shimmer 1.4s linear infinite; }
-@keyframes rv-shimmer { to { background-position: -200% 0; } }
-
-/* formulário */
-.rv-form { padding: 24px; border: 1px solid #dbe5e0; border-radius: 18px; background: #fff; box-shadow: 0 14px 38px rgba(30,61,66,.06); }
-.rv-form h3 { margin: 0 0 18px; color: #122434; font-family: "Manrope", sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -.04em; }
-.rv-field { position: relative; display: grid; gap: 7px; min-width: 0; margin: 0 0 16px; padding: 0; border: 0; }
-.rv-field label, .rv-field legend { padding: 0; color: #2a4150; font-size: 13px; font-weight: 600; }
-.rv-field input, .rv-field select, .rv-field textarea { width: 100%; padding: 12px 14px; border: 1px solid #d3e0da; border-radius: 12px; color: #142232; background: #f8faf8; font: inherit; font-size: 14px; transition: border-color .2s, box-shadow .2s, background .2s; }
-.rv-field textarea { min-height: 112px; resize: vertical; line-height: 1.6; }
-.rv-field input:focus, .rv-field select:focus, .rv-field textarea:focus { border-color: #73cfa9; outline: 0; background: #fff; box-shadow: 0 0 0 4px rgba(115,207,169,.2); }
-.rv-field.is-invalid input, .rv-field.is-invalid textarea, .rv-field.is-invalid .rv-stars-input { border-color: #a93b3b; }
-.rv-counter { justify-self: end; color: #849197; font-size: 11px; }
-.rv-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-/* seletor de estrelas: DOM 5→1 + row-reverse, então "~" pinta as estrelas menores */
-.rv-stars-input { position: relative; display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; width: max-content; padding: 2px; border: 1px solid transparent; border-radius: 12px; }
-.rv-stars-input input { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; opacity: 0; pointer-events: none; }
-.rv-stars-input label { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; color: #cfdbd6; cursor: pointer; transition: color .15s, transform .2s var(--ease-out); }
-.rv-stars-input label .rv-star-svg { width: 28px; height: 28px; }
-.rv-stars-input input:checked ~ label, .rv-stars-input label:hover, .rv-stars-input label:hover ~ label { color: #f2b23a; }
-.rv-stars-input label:active { transform: scale(.9); }
-.rv-stars-input input:focus-visible + label { outline: 3px solid #92dfb3; outline-offset: 2px; }
-
-.rv-submit { width: 100%; justify-content: space-between; margin-top: 4px; border: 0; }
-.rv-submit:disabled { opacity: .6; cursor: progress; transform: none; }
-.rv-status { margin: 12px 0 0; padding: 11px 14px; border-radius: 10px; font-size: 13px; line-height: 1.5; }
-.rv-status[hidden] { display: none; }
-.rv-status.ok { color: #315744; background: #edf6ee; border: 1px solid #d5e7d9; }
-.rv-status.err { color: #7a2b2b; background: #fbeeee; border: 1px solid #f0d3d3; }
-.rv-note { margin: 12px 0 0; color: #849197; font-size: 11.5px; line-height: 1.6; }
-
-/* lista */
-.rv-list { display: grid; gap: 12px; }
-.rv-card { padding: 22px 24px; border: 1px solid #dbe5e0; border-radius: 18px; background: #fff; }
-.rv-card.is-new { animation: rv-in .6s var(--ease-out); border-color: rgba(128,207,116,.7); }
-@keyframes rv-in { from { opacity: 0; transform: translateY(-14px); } }
-.rv-card__head { display: flex; align-items: center; gap: 12px; }
-.rv-avatar { display: grid; width: 40px; height: 40px; flex: none; place-items: center; border-radius: 50%; color: #173b32; background: #e1f2d0; font-family: "Manrope", sans-serif; font-size: 15px; font-weight: 700; }
-.rv-who { min-width: 0; flex: 1; }
-.rv-who b { display: block; overflow: hidden; color: #142737; font-family: "Manrope", sans-serif; font-size: 15px; text-overflow: ellipsis; white-space: nowrap; }
-.rv-who span { color: #7a8a91; font-size: 12.5px; }
-.rv-plan { flex: none; padding: 4px 10px; border-radius: 999px; color: #2f745e; background: #edf6ee; font-size: 12px; font-weight: 600; }
-.rv-card__stars { margin: 14px 0 8px; }
-.rv-card p { margin: 0; color: #4b5d67; font-size: 14.5px; line-height: 1.75; overflow-wrap: anywhere; }
-.rv-del { margin-top: 14px; padding: 6px 12px; border: 1px solid #f0d3d3; border-radius: 999px; color: #7a2b2b; background: #fbeeee; font-size: 12px; font-weight: 600; cursor: pointer; }
-.rv-empty { padding: 34px 24px; border: 1px dashed #c5d6ce; border-radius: 18px; color: #62727a; background: rgba(255,255,255,.6); text-align: center; font-size: 14px; line-height: 1.7; }
-.rv-empty b { display: block; margin-bottom: 4px; color: #122434; font-family: "Manrope", sans-serif; font-size: 18px; }
-.rv-more { justify-self: center; margin: 16px auto 0; padding: 12px 22px; border: 1px solid #c5d6ce; border-radius: 999px; color: #1a4b3e; background: #fff; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s, transform .2s var(--ease-out); }
-.rv-more:hover { background: #e2f1e4; transform: translateY(-1px); }
-.rv-more[hidden] { display: none; }
-.reviews-main { display: grid; }
-
-@media (max-width: 900px) {
-  .reviews-grid { grid-template-columns: 1fr; margin-top: 35px; }
-  .reviews-side { position: static; }
-}
-@media (max-width: 700px) {
-  .rv-summary, .rv-form { padding: 20px; }
-  .rv-card { padding: 18px; }
-  .rv-avg { font-size: 48px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .rv-card.is-new, .rv-skeleton { animation: none; }
-  .rv-bar i { transition: none; }
-}
-
-/* escolha do plano: botões em vez do menu antigo do navegador */
-.rv-choices { display: flex; flex-wrap: wrap; gap: 8px; }
-.rv-field .rv-choice { position: relative; display: block; cursor: pointer; }
-.rv-field .rv-choice input { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; opacity: 0; pointer-events: none; }
-.rv-choice span { display: block; padding: 10px 16px; border: 1px solid #d3e0da; border-radius: 999px; color: #3c5260; background: #f8faf8; font-size: 13.5px; font-weight: 600; transition: background .2s, border-color .2s, color .2s, transform .2s var(--ease-out); }
-.rv-choice:hover span { border-color: #a9c9bb; background: #fff; }
-.rv-choice input:checked + span { border-color: transparent; color: #15251d; background: #baf36a; }
-.rv-choice input:focus-visible + span { outline: 3px solid #92dfb3; outline-offset: 2px; }
-.rv-choice:active span { transform: scale(.96); }
+/* "overflow:hidden" no .site-shell quebrava o position:sticky do FAQ; "clip" corta igual sem criar área de rolagem */
+.site-shell { overflow: hidden; overflow: clip; }
