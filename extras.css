@@ -147,3 +147,13 @@
   .rv-card.is-new, .rv-skeleton { animation: none; }
   .rv-bar i { transition: none; }
 }
+
+/* escolha do plano: botões em vez do menu antigo do navegador */
+.rv-choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.rv-field .rv-choice { position: relative; display: block; cursor: pointer; }
+.rv-field .rv-choice input { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; opacity: 0; pointer-events: none; }
+.rv-choice span { display: block; padding: 10px 16px; border: 1px solid #d3e0da; border-radius: 999px; color: #3c5260; background: #f8faf8; font-size: 13.5px; font-weight: 600; transition: background .2s, border-color .2s, color .2s, transform .2s var(--ease-out); }
+.rv-choice:hover span { border-color: #a9c9bb; background: #fff; }
+.rv-choice input:checked + span { border-color: transparent; color: #15251d; background: #baf36a; }
+.rv-choice input:focus-visible + span { outline: 3px solid #92dfb3; outline-offset: 2px; }
+.rv-choice:active span { transform: scale(.96); }
