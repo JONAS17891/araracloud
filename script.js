@@ -31,10 +31,20 @@ if (menuButton && navigation) {
   });
 }
 
+function setFaq(item, open) {
+  item.classList.toggle("faq-item--open", open);
+  item.querySelector(".faq-question")?.setAttribute("aria-expanded", String(open));
+}
+
 document.querySelectorAll(".faq-question").forEach((button) => {
   button.addEventListener("click", () => {
     const item = button.closest(".faq-item");
-    const answer = item?.querySelector(".faq-answer");
+    if (!item) return;
+    const willOpen = !item.classList.contains("faq-item--open");
+    document.querySelectorAll(".faq-item--open").forEach((o) => { if (o !== item) setFaq(o, false); });
+    setFaq(item, willOpen);
+  });
+});
     if (!item || !answer) return;
     const willOpen = button.getAttribute("aria-expanded") !== "true";
     button.setAttribute("aria-expanded", String(willOpen));
