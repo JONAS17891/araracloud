@@ -308,14 +308,14 @@
                 <input id="rv-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="Como quer aparecer" required>
               </div>
 
-              <div class="rv-field">
-                <label for="rv-plan">Qual plano você usa?</label>
-                <select id="rv-plan" name="plan">
-                  <option value="">Ainda não sou cliente</option>
-                  <option value="Easy">Easy</option>
-                  <option value="Fast">Fast</option>
-                </select>
-              </div>
+              <fieldset class="rv-field">
+                <legend>Qual plano você usa?</legend>
+                <div class="rv-choices">
+                  <label class="rv-choice"><input type="radio" name="plan" value="" checked><span>Ainda não sou cliente</span></label>
+                  <label class="rv-choice"><input type="radio" name="plan" value="Easy"><span>Easy</span></label>
+                  <label class="rv-choice"><input type="radio" name="plan" value="Fast"><span>Fast</span></label>
+                </div>
+              </fieldset>
 
               <div class="rv-field">
                 <label for="rv-text">Sua avaliação</label>
